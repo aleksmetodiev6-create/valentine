@@ -50,8 +50,8 @@
 </head>
 <body>
 
-    <audio id="music">
-        <source src="love.mp3" type="audio/mpeg">
+    <audio id="music" preload="auto">
+        <source src="./love.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container">
@@ -63,6 +63,7 @@
 <script>
     const noBtn = document.getElementById("no");
 
+    // бутон НЕ бяга и при тъч (телефон)
     noBtn.addEventListener("mouseover", moveNo);
     noBtn.addEventListener("touchstart", moveNo);
 
@@ -75,7 +76,9 @@
     }
 
     function openLove() {
-        document.getElementById("music").play();
+        const music = document.getElementById("music");
+        music.currentTime = 0;
+        music.play().catch(() => {}); // сигурно на телефони
 
         document.body.innerHTML = `
             <div style="
