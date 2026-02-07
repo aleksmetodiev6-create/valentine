@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>💘 Валентинка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        #yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #no {
+            background-color: #444;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+      <audio id="music" preload="auto">
+        <source src="love.mp3" type="audio/mpeg">
+      </audio>
+
+    <div class="container">
+        <h1>Ще бъдеш ли моята Валентинка? ❤️</h1>
+        <button id="yes" onclick="openLove()">ДА</button>
+        <button id="no">НЕ</button>
+    </div>
+
+<script>
+    const noBtn = document.getElementById("no");
+
+    noBtn.addEventListener("mouseover", moveNo);
+    noBtn.addEventListener("touchstart", moveNo);
+
+    function moveNo() {
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    function openLove() {
+        document.getElementById("music").play();
+
+        document.body.innerHTML = `
+            <div style="
+                height:100vh;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                background:linear-gradient(135deg,#ff758c,#ff7eb3);
+                font-family:Arial,sans-serif;
+                color:white;
+                text-align:center;
+            ">
+                <h1 style="font-size:3em;">Знаех си 😍❤️</h1>
+                <h2 style="font-size:2em;">Обичам те ❤️</h2>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>
